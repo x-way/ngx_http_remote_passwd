@@ -44,12 +44,14 @@ ngx_module_t ngx_http_remote_passwd_module = {
 	NGX_MODULE_V1_PADDING
 };
 
+static ngx_str_t ngx_http_remote_passwd_variable_name = ngx_string("remote_passwd");
+
 
 
 static ngx_int_t ngx_http_remote_passwd_add_variable(ngx_conf_t *cf) {
 	ngx_http_variable_t *v;
 
-	v = ngx_http_add_variable(cf, ngx_string("remote_passwd"), 0);
+	v = ngx_http_add_variable(cf, &ngx_http_remote_passwd_variable_name, 0);
 	if (v == NULL) {
 		return NGX_ERROR;
 	}
